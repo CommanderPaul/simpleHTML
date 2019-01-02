@@ -1,2 +1,2 @@
-# simpleHTML
-html for testing kubernetes gitRepo volume type
+# Test Repo
+repo for testing
