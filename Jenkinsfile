@@ -5,6 +5,10 @@ pipeline {
             steps {
                 echo 'Building..'
 
+                echo 'env'
+                
+                sh 'echo ${GOPATH}'
+                
                 sh 'ls -al'
                 sh 'go version'
                 
