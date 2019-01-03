@@ -5,28 +5,16 @@ pipeline {
             steps {
                 echo 'Building..'
 
-                echo 'env'
+                sh 'echo env'
                 
-                // GOPATH already present in container
+                // GOPATH already present in golang container
                 sh 'echo ${GOPATH}'
+                sh 'echo ${GOROOT}'
                 
                 sh 'ls -al'
                 sh 'go version'
                 
-                 // Create our project directory.
-                //sh 'mkdir -p ${GOPATH}/src'
                 
-                
-                // Copy all files in our Jenkins workspace to our project directory.                
-                sh 'cp -r ${WORKSPACE}/* ${GOPATH}'
-
-
-                
-                sh 'cd src'
-                
-                
-                sh 'pwd'
-                sh 'ls -al'
                 
                 // Build the app.
                 sh 'go build'
