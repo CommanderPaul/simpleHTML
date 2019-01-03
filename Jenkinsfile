@@ -7,29 +7,13 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'ls -al'
-                checkout scm
+                //checkout scm
                 echo 'Building..'
-
-                sh 'env'
-                
-                // GOPATH already present in golang container
-                sh 'echo ${GOPATH}'
-                sh 'echo ${GOROOT}'
-                
+                sh 'pwd'             
                 sh 'ls -al'
-                sh 'go version'
- 
-                sh 'pwd'
-                
-                sh '(cd $GOPATH && pwd)'
-                
-                sh '(cd src && pwd)'
-                
-                sh '(cd src && go build)'
-                sh '(cd src && ls -al)'
-                // Build the app.
-                //sh 'go build'
                 dir('/var/jenkins_home/workspace'){sh 'ls -al'}
+                dir('/go'){sh 'ls -al'}
+                dir('/'){sh 'ls -al'}
                 
             }
         }
