@@ -1,4 +1,5 @@
 pipeline {
+    // pull from dockerhub, not default
     agent { docker { image 'golang:1.9.2'
                      } }
     stages {
@@ -26,6 +27,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
+                // deploy container to docker hub
                 echo 'Deploying....'
             }
         }
