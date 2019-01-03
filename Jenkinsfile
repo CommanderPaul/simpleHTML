@@ -23,6 +23,11 @@ pipeline {
                 sh 'pwd'
                 
                 sh 'cd ${GOPATH}/src'
+                
+                
+                sh 'pwd'
+                sh 'ls -al'
+                
                 // Build the app.
                 sh 'go build'
                 
