@@ -7,6 +7,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
+                sh 'ls -al'
                 sh 'go version'
             }
         }
