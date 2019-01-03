@@ -8,7 +8,7 @@ pipeline {
                 
                 //sh 'mkdir -p $GOPATH/src/'
                 sh 'ln -s $WORKSPACE $GOPATH/src'
-                dir("$WORKSPACE/src"){sh 'go build -o $WORKSPACE'}
+                dir("$WORKSPACE/src"){sh 'go build -o $WORKSPACE/beans'}
                 sh 'pwd'             
                 sh 'ls -al'
                 dir('/var/jenkins_home/workspace'){sh 'ls -al'}
