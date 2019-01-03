@@ -12,8 +12,14 @@ pipeline {
                 sh 'pwd'             
                 sh 'ls -al'
                 dir('/var/jenkins_home/workspace'){sh 'ls -al'}
+                
+                // doesn't work
                 //dir('/go'){sh 'ls -al'}
-                sh '(cd /go && ls -al)'
+                
+                // works
+                //sh '(cd /go && ls -al)'
+                
+                sh 'ls -al /go'
                 
             }
         }
