@@ -13,15 +13,15 @@ pipeline {
                 
                 sh 'ls -al'
                 sh 'go version'
-                sh 'sudo ls -al'
+ 
                 sh 'pwd'
                 
-                sh 'cd src'
+                sh 'cd $GOPATH'
 
                 sh 'pwd'
                 
                 // Build the app.
-                sh 'go build'
+                //sh 'go build'
                 
                 
             }
