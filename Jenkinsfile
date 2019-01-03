@@ -1,17 +1,27 @@
 pipeline {
     agent { docker { image 'golang:1.9.2' } }
-    environment {
-        GOPATH = "${pwd}"
-    }
     stages {
         stage('Build') {
             steps {
                 echo 'Building..'
-                echo $(GOPATH)
+
                 sh 'ls -al'
                 sh 'go version'
-                sh 'cd src'
+                
+                 // Create our project directory.
+                sh 'cd ${GOPATH}/src'
+                sh 'mkdir -p ${GOPATH}/src'
+
+                // Copy all files in our Jenkins workspace to our project directory.                
+                sh 'cp -r ${WORKSPACE}/* ${GOPATH}/src'
+
+                // Copy all files in our "vendor" folder to our "src" folder.
+                sh 'cp -r ${WORKSPACE}* ${GOPATH}/src'
+
+                // Build the app.
                 sh 'go build'
+                
+                
             }
         }
         stage('Test') {
