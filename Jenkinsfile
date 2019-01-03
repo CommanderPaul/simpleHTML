@@ -13,7 +13,7 @@ pipeline {
                 
                 sh 'ls -al'
                 sh 'go version'
-                sh 'whoami'
+                sh 'sudo ls -al
                 sh 'pwd'
                 
                 sh 'cd src'
