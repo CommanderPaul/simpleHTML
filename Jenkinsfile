@@ -16,9 +16,7 @@ pipeline {
  
                 sh 'pwd'
                 
-                sh 'cd $GOPATH'
-
-                sh 'pwd'
+                sh '(cd $GOPATH && pwd)'
                 
                 // Build the app.
                 //sh 'go build'
