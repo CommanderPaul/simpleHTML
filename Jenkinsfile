@@ -1,8 +1,13 @@
 pipeline {
     agent { docker { image 'golang:1.9.2' } }
+    options {
+        skipDefaultCheckout(true)
+    }
     stages {
         stage('Build') {
             steps {
+                sh 'ls -al'
+                checkout scm
                 echo 'Building..'
 
                 sh 'env'
