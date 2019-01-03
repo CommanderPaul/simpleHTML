@@ -16,7 +16,7 @@ pipeline {
                 sh 'cp -r ${WORKSPACE}/* ${GOPATH}/src'
 
                 // Copy all files in our "vendor" folder to our "src" folder.
-                sh 'cp -r ${WORKSPACE}* ${GOPATH}/src'
+                sh 'cp -r ${WORKSPACE}/test_pipeline/* ${GOPATH}/src'
 
                 // Build the app.
                 sh 'go build'
