@@ -1,5 +1,6 @@
 pipeline {
-    agent { docker { image 'golang:1.9.2' } }
+    agent { docker { image 'golang:1.9.2'
+                      args '-u root:sudo'} }
     options {
         skipDefaultCheckout(true)
     }
