@@ -1,8 +1,6 @@
 pipeline {
     agent { docker { image 'golang' } }
     
-    ws("${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_ID}/") {
-   withEnv(["GOPATH=${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_ID}"]) {
 
     
     stages {
@@ -24,9 +22,7 @@ pipeline {
         }
     }
        
-       
-         }
-} 
+
        
        
 }
