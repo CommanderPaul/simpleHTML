@@ -7,7 +7,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                echo $GOPATH
+                echo $(GOPATH)
                 sh 'ls -al'
                 sh 'go version'
                 sh 'cd src'
