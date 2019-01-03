@@ -21,7 +21,7 @@ pipeline {
                 sh '(cd src && pwd)'
                 
                 sh '(cd src && go build)'
-                
+                sh '(cd src && ls -al)'
                 // Build the app.
                 //sh 'go build'
                 
