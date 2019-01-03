@@ -5,7 +5,7 @@ pipeline {
             steps {
                 echo 'Building..'
 
-                sh 'echo env'
+                sh 'env'
                 
                 // GOPATH already present in golang container
                 sh 'echo ${GOPATH}'
@@ -14,7 +14,11 @@ pipeline {
                 sh 'ls -al'
                 sh 'go version'
                 
+                sh 'pwd'
                 
+                sh 'cd src'
+
+                sh 'pwd'
                 
                 // Build the app.
                 sh 'go build'
