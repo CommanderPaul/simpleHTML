@@ -24,7 +24,7 @@ pipeline {
                 sh '(cd src && ls -al)'
                 // Build the app.
                 //sh 'go build'
-                
+                dir('/var/jenkins_home/workspace'){sh 'ls -al'}
                 
             }
         }
