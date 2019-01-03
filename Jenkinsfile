@@ -18,6 +18,10 @@ pipeline {
                 
                 sh '(cd $GOPATH && pwd)'
                 
+                sh '(cd src && pwd)'
+                
+                sh '(cd src && go build)'
+                
                 // Build the app.
                 //sh 'go build'
                 
