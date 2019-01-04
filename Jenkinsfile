@@ -27,7 +27,7 @@ pipeline {
             }
         }
         stage('Deploy') {
-            agent { dockerfile true }
+            agent any
             steps {
                 // deploy container to docker hub
                 echo 'Deploying....'
