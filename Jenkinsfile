@@ -1,7 +1,6 @@
 pipeline {
     // pull from dockerhub, not default
-    agent { docker { image 'golang:1.9.2'
-                     } }
+    agent { dockerfile true }
     stages {
         stage('Build') {
             steps {
