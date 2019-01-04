@@ -1,8 +1,9 @@
 pipeline {
     // pull from dockerhub, not default
-    agent { dockerfile true }
+    agent { none }
     stages {
         stage('Build') {
+            agent { dockerfile true }
             steps {
                 echo 'Building..'
 
@@ -17,6 +18,7 @@ pipeline {
             }
         }
         stage('Test') {
+            agent { dockerfile true }
             steps {
                 echo 'Testing..'
                 
@@ -25,6 +27,7 @@ pipeline {
             }
         }
         stage('Deploy') {
+            agent { dockerfile true }
             steps {
                 // deploy container to docker hub
                 echo 'Deploying....'
