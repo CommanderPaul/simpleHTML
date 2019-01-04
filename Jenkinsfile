@@ -1,6 +1,6 @@
 pipeline {
     // pull from dockerhub, not default
-    agent { none }
+    agent none
     stages {
         stage('Build') {
             agent { dockerfile true }
