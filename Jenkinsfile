@@ -18,7 +18,7 @@ pipeline {
             }
         }
         stage('Test') {
-            agent { docker { alpine:3.6 } }
+            agent { docker { image 'alpine:3.6' } }
             steps {
                 echo 'Testing..'
                 
