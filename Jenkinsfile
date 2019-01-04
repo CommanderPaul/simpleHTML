@@ -18,7 +18,7 @@ pipeline {
             }
         }
         stage('Test') {
-            agent { dockerfile true }
+            agent { docker { alpine:3.6 } }
             steps {
                 echo 'Testing..'
                 
