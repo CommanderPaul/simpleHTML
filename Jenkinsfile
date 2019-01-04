@@ -28,6 +28,7 @@ pipeline {
             steps {
                 // deploy container to docker hub
                 echo 'Deploying....'
+                sh 'docker build -t paulwroe/golangbuild:v1 .'
             }
         }
     }
