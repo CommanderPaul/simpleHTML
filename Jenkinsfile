@@ -32,7 +32,11 @@ pipeline {
                 // deploy container to docker hub
                 echo 'Deploying....'
                 sh 'docker build -t paulwroe/golangbuild:v1 .'
-                sh 'docker push paulwroe/golangbuild:v1'
+
+                //needs creds
+                sh 'echo $dockerhub'
+                sh 'echo $DOCKERHUB'
+                // sh 'docker push paulwroe/golangbuild:v1'
             }
         }
     }
