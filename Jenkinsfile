@@ -9,21 +9,21 @@ pipeline {
 
                 //sh 'ln -s $WORKSPACE $GOPATH/src'
                 dir("$WORKSPACE/src"){sh 'go build -o $WORKSPACE/beans'}
-           
+
                 sh 'ls -al'
                 dir('/var/jenkins_home/workspace'){sh 'ls -al'}
-                
+
                 sh 'ls -al /go'
-                
+
             }
         }
         stage('Test') {
             agent { docker { image 'alpine:3.6' } }
             steps {
                 echo 'Testing..'
-                
+
                 sh './beans'
-                
+
             }
         }
         stage('Deploy') {
@@ -32,15 +32,12 @@ pipeline {
                 // deploy container to docker hub
                 echo 'Deploying....'
                 sh 'docker build -t paulwroe/golangbuild:v1 .'
+                sh 'docker push paulwroe/golangbuild:v1'
             }
         }
     }
-       
 
-       
-       
+
+
+
 }
-        
-        
-        
-
