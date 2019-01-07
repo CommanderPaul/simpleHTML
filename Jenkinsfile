@@ -7,6 +7,8 @@ pipeline {
             steps {
                 echo 'Building..'
 
+                sh 'env'
+
                 //sh 'ln -s $WORKSPACE $GOPATH/src'
                 dir("$WORKSPACE/src"){sh 'go build -o $WORKSPACE/beans'}
 
@@ -31,7 +33,8 @@ pipeline {
             steps {
                 // deploy container to docker hub
                 echo 'Deploying....'
-                sh 'docker build -t paulwroe/golangbuild:v2 .  --build-arg Beans=garbonzo'
+                echo "Running ${env.JOB_NAME} job ${env.BUILD_ID} on ${env.JENKINS_URL}"
+                sh 'docker build -t paulwroe/golangbuild:v2 .'
 
                 //needs creds
                  withDockerRegistry([ credentialsId: "dockerhub", url: "" ]){
