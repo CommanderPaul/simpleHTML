@@ -31,7 +31,7 @@ pipeline {
             steps {
                 // deploy container to docker hub
                 echo 'Deploying....'
-                sh 'docker build -t paulwroe/golangbuild:v1 .  --build-arg Beans=garbonzo'
+                sh 'docker build -t paulwroe/golangbuild:v2 .  --build-arg Beans=garbonzo'
 
                 //needs creds
                  withDockerRegistry([ credentialsId: "dockerhub", url: "" ]){
