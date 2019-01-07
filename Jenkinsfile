@@ -36,7 +36,7 @@ pipeline {
                 //needs creds
                  withDockerRegistry([ credentialsId: "dockerhub", url: "" ]){
 
-                sh 'docker push paulwroe/golangbuild:v1'
+                sh 'docker push paulwroe/golangbuild:v1 --build-arg Beans=garbonzo'
                 }
 
             }
