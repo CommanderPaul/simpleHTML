@@ -1,6 +1,6 @@
 FROM golang:1.8
 
-RUN go get -u golang.org/x/lint/golint
+RUN go get -u -v golang.org/x/lint/golint
 
 #WORKDIR /go/src/app
 #COPY . .
