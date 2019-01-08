@@ -1,7 +1,7 @@
 pipeline {
   agent none
-  echo "Running job ${env.JOB_NAME} on ${env.JENKINS_URL}"
   stages {
+    echo "Running job ${env.JOB_NAME} on ${env.JENKINS_URL}"
     stage('Build') {
       agent { dockerfile true }
       steps {
@@ -13,7 +13,7 @@ pipeline {
         dir("$WORKSPACE/src"){sh 'golint .'}
 
         sh """cd $GOPATH && go tool vet ${paths}"""
-        
+
         dir("$WORKSPACE/src"){sh 'go build -o $WORKSPACE/beans'}
       }
     }
