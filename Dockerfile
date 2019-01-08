@@ -1,5 +1,7 @@
 FROM golang:1.8
 
+RUN go get -u golang.org/x/lint/golint
+
 #WORKDIR /go/src/app
 #COPY . .
 
