@@ -35,10 +35,10 @@ pipeline {
       // deploy container to docker hub
       echo "Executing ${env.STAGE_NAME} stage"
 
-      sh 'docker build -t paulwroe/golangbuild:$env.BUILD_ID .'
+      sh "docker build -t paulwroe/golangbuild:${env.BUILD_ID} ."
 
       withDockerRegistry([ credentialsId: "dockerhub", url: "" ]){
-        sh 'docker push paulwroe/golangbuild:$env.BUILD_ID'
+        sh "docker push paulwroe/golangbuild:${env.BUILD_ID}"
       }
 
     }
