@@ -12,7 +12,7 @@ pipeline {
         sh 'ls $GOPATH/bin'
 
         echo 'Linting'
-        dir("$WORKSPACE/src"){sh '$GOPATH/bin/golint .'}
+        dir("$WORKSPACE/src"){sh '''$GOPATH/bin/golint .'''}
 
         //sh """cd $GOPATH && go tool vet ${paths}"""
 
