@@ -6,13 +6,12 @@ pipeline {
       steps {
         echo "Running job ${env.JOB_NAME} on ${env.JENKINS_URL}"
         echo "Executing ${env.STAGE_NAME} stage"
-        sh 'env'
-
-        sh 'ls $GOPATH'
-        sh 'ls $GOPATH/bin'
 
         echo 'Linting'
-        dir("$WORKSPACE/src"){sh '''$GOPATH/bin/golint .'''}
+        dir("$WORKSPACE/src"){sh '''
+          def lintCheck = $GOPATH/bin/golint .
+          result = lintCheck.result
+        '''}
 
         //sh """cd $GOPATH && go tool vet ${paths}"""
 
