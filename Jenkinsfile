@@ -8,11 +8,15 @@ pipeline {
         echo "Executing ${env.STAGE_NAME} stage"
         sh 'env'
 
+        sh 'ls $GOPATH'
+        sh 'ls $GOPATH/bin'
 
         echo 'Linting'
-        dir("$WORKSPACE/src"){sh 'golint .'}
+        dir("$WORKSPACE/src"){sh '$GOPATH/bin/golintgolint .'}
 
-        sh """cd $GOPATH && go tool vet ${paths}"""
+        //sh """cd $GOPATH && go tool vet ${paths}"""
+
+        // run unit tests here
 
         dir("$WORKSPACE/src"){sh 'go build -o $WORKSPACE/beans'}
       }
@@ -21,6 +25,7 @@ pipeline {
       agent { docker { image 'alpine:3.6' } }
       steps {
         echo "Executing ${env.STAGE_NAME} stage"
+        // run function test here
         sh './beans'
       }
     }
