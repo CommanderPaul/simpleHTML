@@ -1,3 +1,4 @@
+#!/usr/bin/env groovy
 pipeline {
   agent none
   stages {
@@ -9,10 +10,11 @@ pipeline {
 
         echo 'Linting'
         dir("$WORKSPACE/src"){sh '''
-          $GOPATH/bin/golint .
+          if $GOPATH/bin/golint . != ""
+          then echo "not empty"
         '''}
 
-        sh 'which python'
+
 
         //sh """cd $GOPATH && go tool vet ${paths}"""
 
