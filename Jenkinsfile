@@ -9,9 +9,10 @@ pipeline {
 
         echo 'Linting'
         dir("$WORKSPACE/src"){sh '''
-          def lintCheck = $GOPATH/bin/golint .
-          result = lintCheck.result
+          $GOPATH/bin/golint .
         '''}
+
+        sh 'which python'
 
         //sh """cd $GOPATH && go tool vet ${paths}"""
 
