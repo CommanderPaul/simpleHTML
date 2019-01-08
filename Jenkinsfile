@@ -1,52 +1,42 @@
 pipeline {
-    // pull from dockerhub, not default
-    agent none
-    stages {
-        stage('Build') {
-            agent { dockerfile true }
-            steps {
-                echo 'Building..'
+  agent none
+  echo "Running job ${env.JOB_NAME} on ${env.JENKINS_URL}"
+  stages {
+    stage('Build') {
+      agent { dockerfile true }
+      steps {
+        echo "Executing ${env.STAGE_NAME} stage"
+        sh 'env'
 
-                sh 'env'
 
-                //sh 'ln -s $WORKSPACE $GOPATH/src'
-                dir("$WORKSPACE/src"){sh 'go build -o $WORKSPACE/beans'}
+        echo 'Linting'
+        dir("$WORKSPACE/src"){sh 'golint .'}
 
-                sh 'ls -al'
-                dir('/var/jenkins_home/workspace'){sh 'ls -al'}
-
-                sh 'ls -al /go'
-
-            }
-        }
-        stage('Test') {
-            agent { docker { image 'alpine:3.6' } }
-            steps {
-                echo 'Testing..'
-
-                sh './beans'
-
-            }
-        }
-        stage('Deploy') {
-            agent any
-            steps {
-                // deploy container to docker hub
-                echo 'Deploying....'
-                echo "Running ${env.JOB_NAME} job ${env.BUILD_ID} on ${env.JENKINS_URL}"
-                sh 'docker build -t paulwroe/golangbuild:v2 .'
-
-                //needs creds
-                 withDockerRegistry([ credentialsId: "dockerhub", url: "" ]){
-
-                sh 'docker push paulwroe/golangbuild:v2'
-                }
-
-            }
-        }
+        sh """cd $GOPATH && go tool vet ${paths}"""
+        
+        dir("$WORKSPACE/src"){sh 'go build -o $WORKSPACE/beans'}
+      }
     }
+    stage('Test') {
+      agent { docker { image 'alpine:3.6' } }
+      steps {
+        echo "Executing ${env.STAGE_NAME} stage"
+        sh './beans'
+      }
+    }
+    stage('Deploy') {
+    agent any
+    steps {
+      // deploy container to docker hub
+      echo "Executing ${env.STAGE_NAME} stage"
 
+      sh 'docker build -t paulwroe/golangbuild:${env.BUILD_ID} .'
 
+      withDockerRegistry([ credentialsId: "dockerhub", url: "" ]){
+        sh 'docker push paulwroe/golangbuild:${env.BUILD_ID}'
+      }
 
-
+    }
+    }
+  }
 }
