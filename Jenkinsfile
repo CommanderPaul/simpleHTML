@@ -1,10 +1,10 @@
 pipeline {
   agent none
   stages {
-    echo "Running job ${env.JOB_NAME} on ${env.JENKINS_URL}"
     stage('Build') {
       agent { dockerfile true }
       steps {
+        echo "Running job ${env.JOB_NAME} on ${env.JENKINS_URL}"
         echo "Executing ${env.STAGE_NAME} stage"
         sh 'env'
 
