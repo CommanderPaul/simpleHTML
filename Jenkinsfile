@@ -8,24 +8,20 @@ pipeline {
         echo "Running job ${env.JOB_NAME} on ${env.JENKINS_URL}"
         echo "Executing ${env.STAGE_NAME} stage"
 
-        echo 'Linting'
-
-        // groovy script block
+        // groovy script blocks
         script {
-          LINT_OUTPUT = sh (
-          script: '$GOPATH/bin/golint $WORKSPACE/src',
-          returnStdout: true
-          ).trim()
-          echo "lint output: ${LINT_OUTPUT}"
+                LINT_OUTPUT = sh (
+                    script: '$GOPATH/bin/golint $WORKSPACE/src',
+                    returnStdout: true
+                ).trim()
 
                 }
 
 
           script {
                     if (LINT_OUTPUT == "") {
-                            echo 'empty string'
+                            echo 'Passed Linter'
                     } else {
-                            echo 'not empty'
                             error('Failed Linter')
                     }
                   }
