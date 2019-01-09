@@ -12,11 +12,12 @@ pipeline {
 
 
         script {
-                  #!/bin/bash
-                  def browsers = ['chrome', 'firefox']
-                  for (int i = 0; i < browsers.size(); ++i) {
-                      echo "Testing the ${browsers[i]} browser"
-                  }
+          // Git committer email
+          GIT_COMMIT_EMAIL = sh (
+          script: 'git --no-pager show -s --format=\'%ae\'',
+          returnStdout: true
+          ).trim()
+          echo "Git committer email: ${GIT_COMMIT_EMAIL}"
 
                 }
 
