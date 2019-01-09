@@ -28,7 +28,7 @@ pipeline {
                     } else {
                             echo 'not null'
                     }
-
+                  }
 
         // dir("$WORKSPACE/src"){sh '''
         //
