@@ -22,6 +22,7 @@ pipeline {
                     if (LINT_OUTPUT == "") {
                             echo 'Passed Linter'
                     } else {
+                            echo 'Failed Linter'
                             error('Failed Linter')
                     }
                   }
