@@ -11,7 +11,7 @@ pipeline {
         echo 'Linting'
 
 
-        sh(){ '''
+        sh(script: "#!/usr/bin/bash" ){ '''
 
             echo 'beans'
 
