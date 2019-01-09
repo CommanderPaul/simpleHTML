@@ -10,7 +10,12 @@ pipeline {
 
         echo 'Linting'
         dir("$WORKSPACE/src"){sh '''
-          if [ ]$GOPATH/bin/golint . != "" ]
+
+          result = $GOPATH/bin/golint
+
+          echo '$result'
+
+          if [ {$GOPATH/bin/golint} != "" ]
             then echo "not empty"
           fi
         '''}
