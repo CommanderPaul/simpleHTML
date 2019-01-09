@@ -26,6 +26,7 @@ pipeline {
                             echo 'empty string'
                     } else {
                             echo 'not empty'
+                            error('Failed Linter')
                     }
                   }
 
