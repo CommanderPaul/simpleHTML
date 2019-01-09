@@ -9,15 +9,15 @@ pipeline {
         echo "Executing ${env.STAGE_NAME} stage"
 
         echo 'Linting'
-        dir("$WORKSPACE/src"){sh '''
-
-          $GOPATH/bin/golint .
-
-          echo '$result'
-
-
-
-        '''}
+        // dir("$WORKSPACE/src"){sh '''
+        //
+        //   $GOPATH/bin/golint .
+        //
+        //   echo '$result'
+        //
+        //
+        //
+        // '''}
 
         testbeans = sh (
 
