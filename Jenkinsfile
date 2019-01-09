@@ -13,16 +13,21 @@ pipeline {
 
         script {
           // Git committer email
-          GIT_COMMIT_EMAIL = sh (
+          LINT_OUTPUT = sh (
           script: '$GOPATH/bin/golint $WORKSPACE/src',
           returnStdout: true
           ).trim()
-          echo "Git committer email: ${GIT_COMMIT_EMAIL}"
+          echo "lint output: ${LINT_OUTPUT}"
 
                 }
 
 
-
+          script {
+                    if (LINT_OUTPUT == null) {
+                            echo 'null stuff'
+                    } else {
+                            echo 'not null'
+                    }
 
 
         // dir("$WORKSPACE/src"){sh '''
