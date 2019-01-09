@@ -14,7 +14,7 @@ pipeline {
         script {
           // Git committer email
           GIT_COMMIT_EMAIL = sh (
-          script: " '$GOPATH/bin/golint $WORKSPACE/src'   ",
+          script: '$GOPATH/bin/golint $WORKSPACE/src',
           returnStdout: true
           ).trim()
           echo "Git committer email: ${GIT_COMMIT_EMAIL}"
