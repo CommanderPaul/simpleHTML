@@ -11,17 +11,14 @@ pipeline {
         echo 'Linting'
 
 
-        // sh(script: "#!/usr/bin/bash" ){
-        //
-        //     echo 'beans'
-        //
-        //     }
+        script {
+                  def browsers = ['chrome', 'firefox']
+                  for (int i = 0; i < browsers.size(); ++i) {
+                      echo "Testing the ${browsers[i]} browser"
+                  }
 
-            GIT_COMMIT_EMAIL = sh (
-                script: 'git --no-pager show -s --format=\'%ae\'',
-                returnStdout: true
-            ).trim()
-            echo "Git committer email: ${GIT_COMMIT_EMAIL}"
+
+
 
 
         // dir("$WORKSPACE/src"){sh '''
