@@ -8,60 +8,26 @@ pipeline {
         echo "Running job ${env.JOB_NAME} on ${env.JENKINS_URL}"
         echo "Executing ${env.STAGE_NAME} stage"
 
-        // groovy script blocks
+        // groovy script block
         script {
-                LINT_OUTPUT = sh (
-                    script: '$GOPATH/bin/golint $WORKSPACE/src',
-                    returnStdout: true
-                ).trim()
+                  LINT_OUTPUT = sh (
+                      script: '$GOPATH/bin/golint $WORKSPACE/src',
+                      returnStdout: true
+                  ).trim()
 
-
-                if (LINT_OUTPUT == "") {
-                        echo 'Passed Linter'
-                } else {
-                        echo 'Failed Linter'
-                        error('Failed Linter')
-                }
-
-                }
-
-
-          // script {
-          //
-          //         }
-
-        // dir("$WORKSPACE/src"){sh '''
-        //
-        //   $GOPATH/bin/golint .
-        //
-        //   echo '$result'
-        //
-        //
-        //
-        // '''}
-
-        // TEST_BEANS = sh (
-        //
-        //   script: '$GOPATH/bin/golint $WORKSPACE/src',
-        //   returnStdout: true
-        //
-        //   ).trim()
-
-          //echo "the result ${testbeans}"
-
-//exit 1
-        // if [ {$GOPATH/bin/golint} != "" ]
-        //   then echo "not empty"
-        // fi
-
-
-
+                  if (LINT_OUTPUT == "") {
+                          echo 'Passed Linter'
+                  } else {
+                          echo 'Failed Linter'
+                          error('Failed Linter')
+                  }
+        }
 
         //sh """cd $GOPATH && go tool vet ${paths}"""
 
         // run unit tests here
 
-        //dir("$WORKSPACE/src"){sh 'go build -o $WORKSPACE/beans'}
+        dir("$WORKSPACE/src"){sh 'go build -o $WORKSPACE/beans'}
       }
     }
     stage('Test') {

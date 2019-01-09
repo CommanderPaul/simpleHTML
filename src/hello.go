@@ -5,7 +5,7 @@ import "fmt"
 // Beans comment is required by linter
 const Beans string = "beans and beer"
 
-// bad comment
+// Greenbean comment
 const Greenbean string = "second string"
 
 func main() {
