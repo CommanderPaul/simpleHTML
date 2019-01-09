@@ -15,17 +15,20 @@ pipeline {
                     returnStdout: true
                 ).trim()
 
+
+                if (LINT_OUTPUT == "") {
+                        echo 'Passed Linter'
+                } else {
+                        echo 'Failed Linter'
+                        error('Failed Linter')
+                }
+
                 }
 
 
-          script {
-                    if (LINT_OUTPUT == "") {
-                            echo 'Passed Linter'
-                    } else {
-                            echo 'Failed Linter'
-                            error('Failed Linter')
-                    }
-                  }
+          // script {
+          //
+          //         }
 
         // dir("$WORKSPACE/src"){sh '''
         //
