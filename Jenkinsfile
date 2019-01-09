@@ -48,7 +48,7 @@ print("hello")
 
         // run unit tests here
 
-        dir("$WORKSPACE/src"){sh 'go build -o $WORKSPACE/beans'}
+        //dir("$WORKSPACE/src"){sh 'go build -o $WORKSPACE/beans'}
       }
     }
     stage('Test') {
