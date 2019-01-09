@@ -10,9 +10,8 @@ pipeline {
 
         echo 'Linting'
 
-
+        // groovy script block
         script {
-          // Git committer email
           LINT_OUTPUT = sh (
           script: '$GOPATH/bin/golint $WORKSPACE/src',
           returnStdout: true
@@ -23,10 +22,10 @@ pipeline {
 
 
           script {
-                    if (LINT_OUTPUT == null) {
-                            echo 'null stuff'
+                    if (LINT_OUTPUT == "") {
+                            echo 'empty string'
                     } else {
-                            echo 'not null'
+                            echo 'not empty'
                     }
                   }
 
