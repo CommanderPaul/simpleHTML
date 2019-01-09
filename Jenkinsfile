@@ -9,6 +9,14 @@ pipeline {
         echo "Executing ${env.STAGE_NAME} stage"
 
         echo 'Linting'
+
+
+        sh(script: #!/usr/bin/python) '''
+
+print("hello")
+
+'''
+
         // dir("$WORKSPACE/src"){sh '''
         //
         //   $GOPATH/bin/golint .
