@@ -11,16 +11,19 @@ pipeline {
         echo 'Linting'
         dir("$WORKSPACE/src"){sh '''
 
-          result = $GOPATH/bin/golint
+          result = ($GOPATH/bin/golint .)
 
           echo '$result'
 
-          if [ {$GOPATH/bin/golint} != "" ]
-            then echo "not empty"
-          fi
+
         '''}
 
+        // if [ {$GOPATH/bin/golint} != "" ]
+        //   then echo "not empty"
+        // fi
 
+
+        exit 1
 
         //sh """cd $GOPATH && go tool vet ${paths}"""
 
