@@ -15,20 +15,20 @@ pipeline {
 
           echo '$result'
 
-          exit 1
+
 
         '''}
 
-        testbeans = dir("$WORKSPACE/src"){sh (
+        testbeans = sh (
 
-          script: '$GOPATH/bin/golint .',
+          script: '$GOPATH/bin/golint $WORKSPACE/src',
           returnStdout: true
 
-          )}.trim()
+          ).trim()
 
           echo "the result ${testbeans}"
 
-
+//exit 1
         // if [ {$GOPATH/bin/golint} != "" ]
         //   then echo "not empty"
         // fi
