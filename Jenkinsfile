@@ -11,11 +11,11 @@ pipeline {
         echo 'Linting'
 
 
-        sh(script: "#!/usr/bin/bash" ){ '''
+        sh(script: "#!/usr/bin/bash" ){
 
             echo 'beans'
 
-            '''}
+            }
 
         // dir("$WORKSPACE/src"){sh '''
         //
