@@ -19,14 +19,14 @@ pipeline {
         //
         // '''}
 
-        testbeans = sh (
+        // TEST_BEANS = sh (
+        //
+        //   script: '$GOPATH/bin/golint $WORKSPACE/src',
+        //   returnStdout: true
+        //
+        //   ).trim()
 
-          script: '$GOPATH/bin/golint $WORKSPACE/src',
-          returnStdout: true
-
-          ).trim()
-
-          echo "the result ${testbeans}"
+          //echo "the result ${testbeans}"
 
 //exit 1
         // if [ {$GOPATH/bin/golint} != "" ]
