@@ -11,7 +11,7 @@ pipeline {
         echo 'Linting'
         dir("$WORKSPACE/src"){sh '''
 
-          result = ($GOPATH/bin/golint .)
+          $GOPATH/bin/golint .
 
           echo '$result'
 
