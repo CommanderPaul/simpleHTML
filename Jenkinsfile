@@ -11,7 +11,7 @@ pipeline {
         echo 'Linting'
 
 
-        sh(script: #!/usr/bin/python) '''
+        sh(script: '#!/usr/bin/python') '''
 
 print("hello")
 
