@@ -15,15 +15,26 @@ pipeline {
 
           echo '$result'
 
+          exit 1
 
         '''}
+
+        testbeans = dir("$WORKSPACE/src"){sh (
+
+          script: '$GOPATH/bin/golint .',
+          returnStdout: true
+
+          ).trim()
+
+          echo "the result ${testbeans}"
+
 
         // if [ {$GOPATH/bin/golint} != "" ]
         //   then echo "not empty"
         // fi
 
 
-        exit 1
+
 
         //sh """cd $GOPATH && go tool vet ${paths}"""
 
