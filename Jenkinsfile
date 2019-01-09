@@ -11,11 +11,11 @@ pipeline {
         echo 'Linting'
 
 
-        sh(script: '#!/usr/bin/python') '''
+        sh(){ '''
 
-print("hello")
+            echo 'beans'
 
-'''
+            '''}
 
         // dir("$WORKSPACE/src"){sh '''
         //
