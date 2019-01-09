@@ -24,7 +24,7 @@ pipeline {
           script: '$GOPATH/bin/golint .',
           returnStdout: true
 
-          ).trim()
+          )}.trim()
 
           echo "the result ${testbeans}"
 
