@@ -11,11 +11,18 @@ pipeline {
         echo 'Linting'
 
 
-        sh(script: "#!/usr/bin/bash" ){
+        // sh(script: "#!/usr/bin/bash" ){
+        //
+        //     echo 'beans'
+        //
+        //     }
 
-            echo 'beans'
+            GIT_COMMIT_EMAIL = sh (
+                script: 'git --no-pager show -s --format=\'%ae\'',
+                returnStdout: true
+            ).trim()
+            echo "Git committer email: ${GIT_COMMIT_EMAIL}"
 
-            }
 
         // dir("$WORKSPACE/src"){sh '''
         //
